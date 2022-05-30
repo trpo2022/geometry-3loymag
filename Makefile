@@ -27,17 +27,13 @@ obj/src/libgeo/triangle_area.o: src/libgeo/triangle_area.cpp
 
 obj/src/libgeo/triangle_perimeter.o: src/libgeo/triangle_perimeter.cpp
 	gcc -c -I src $(CFLAGS) -o $@ $< -lm	
-
-test: bin/test/main
-
-bin/test/main: obj/test/test_geo.o obj/test/main.o
-	gcc -I $(CFLAGS) -o $@ $^ -lm 
-
-obj/test/test_geo.o: test/test_geo.c
+	
+main.o: test/main.c
 	gcc -c $(CCFLAGS) -o $@ $< -lm
 
-obj/test/main.o: test/main.c
+test_geo.o: test/test_geo.c
 	gcc -c $(CCFLAGS) -o $@ $< -lm
+
 
 
 .PHONY: clean
